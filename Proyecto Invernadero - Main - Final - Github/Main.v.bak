@@ -1,0 +1,53 @@
+module Main(Clock)
+
+input Clock;
+input KeyScape
+
+reg [3:0] Status;
+
+//Inicio Lectura de Datos SDcard
+
+
+//Implementacion de registros y cableado entre los modulos
+
+
+parameter INFORMACION=0, IHUMEDADS=1, IHUMEDADA=2, ITEMPERATURA=3, ICALIDADA=4, IINTENSIDADUV=5, AJUSTES=6, AJUSTEHUMEDADCANTIDAD=7, AHUMEDADS=8, ACANTIDADA=9, AJUSTESHUMEDADA=10, AHUMEDADA=11, AJUSTESTEMPERATURA=12, ATEMPERATURA=13, AJUSTESINTENSIDADUV=14,AINTENSIDADUV=15;
+
+always @(posedge Clock) begin
+
+	case(Status)begin
+		INFORMACION: begin
+			//Enviar Texto Informacion Display
+			if(KeyEnter)Status=IHUMEDADS;
+		end
+		IHUMEDADS: begin
+			//Recoger informacion del Sensor desde Arduino
+	
+		
+		end
+	
+
+
+
+
+
+
+	
+	
+	end
+	
+	
+	if(keyScape)Status=INFORMACION;
+
+	
+	
+	
+end
+
+
+//Maquina de estados Menu
+
+
+
+endmodule
+

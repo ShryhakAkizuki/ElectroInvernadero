@@ -1,0 +1,1077 @@
+Analysis & Synthesis report for Main
+Mon Dec 14 16:45:30 2020
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Main|Status
+  9. State Machine - |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Status
+ 10. State Machine - |Main|Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Status
+ 11. State Machine - |Main|TwoRegToChar:I2C|RegistroEntero1
+ 12. State Machine - |Main|LCD16X2:Displa|I2CLCDRW:I2C|State
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Parameter Settings for User Entity Instance: Top-level Entity: |Main
+ 19. Parameter Settings for User Entity Instance: Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX
+ 20. Parameter Settings for User Entity Instance: Control:Salidas|Riego:RiegoPesticida
+ 21. Parameter Settings for User Entity Instance: Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar
+ 22. Parameter Settings for User Entity Instance: Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R
+ 23. Parameter Settings for User Entity Instance: Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar
+ 24. Port Connectivity Checks: "Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display"
+ 25. Port Connectivity Checks: "Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar"
+ 26. Port Connectivity Checks: "Control:Salidas|Riego:RiegoPesticida"
+ 27. Port Connectivity Checks: "LCD16X2:Displa|I2CLCDRW:I2C"
+ 28. Port Connectivity Checks: "Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN"
+ 29. Port Connectivity Checks: "Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX"
+ 30. Port Connectivity Checks: "Usend:comb_3|TOPSendder:UartTX"
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
+ 34. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Mon Dec 14 16:45:30 2020       ;
+; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                      ; Main                                        ;
+; Top-level Entity Name              ; Main                                        ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 2,074                                       ;
+;     Total combinational functions  ; 2,052                                       ;
+;     Dedicated logic registers      ; 759                                         ;
+; Total registers                    ; 759                                         ;
+; Total pins                         ; 34                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                        ;
++------------------------------------------------------------------+--------------+--------------------+
+; Option                                                           ; Setting      ; Default Value      ;
++------------------------------------------------------------------+--------------+--------------------+
+; Device                                                           ; EP4CE10E22C8 ;                    ;
+; Top-level entity name                                            ; Main         ; Main               ;
+; Family name                                                      ; Cyclone IV E ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation              ; All          ;                    ;
+; Power Optimization During Synthesis                              ; Extra effort ; Normal compilation ;
+; Use smart compilation                                            ; Off          ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On           ; On                 ;
+; Enable compact report table                                      ; Off          ; Off                ;
+; Restructure Multiplexers                                         ; Auto         ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off          ; Off                ;
+; Preserve fewer node names                                        ; On           ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable       ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001 ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993    ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto         ; Auto               ;
+; Safe State Machine                                               ; Off          ; Off                ;
+; Extract Verilog State Machines                                   ; On           ; On                 ;
+; Extract VHDL State Machines                                      ; On           ; On                 ;
+; Ignore Verilog initial constructs                                ; Off          ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000         ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250          ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On           ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On           ; On                 ;
+; Parallel Synthesis                                               ; On           ; On                 ;
+; DSP Block Balancing                                              ; Auto         ; Auto               ;
+; NOT Gate Push-Back                                               ; On           ; On                 ;
+; Power-Up Don't Care                                              ; On           ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off          ; Off                ;
+; Remove Duplicate Registers                                       ; On           ; On                 ;
+; Ignore CARRY Buffers                                             ; Off          ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off          ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off          ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off          ; Off                ;
+; Ignore LCELL Buffers                                             ; Off          ; Off                ;
+; Ignore SOFT Buffers                                              ; On           ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off          ; Off                ;
+; Optimization Technique                                           ; Balanced     ; Balanced           ;
+; Carry Chain Length                                               ; 70           ; 70                 ;
+; Auto Carry Chains                                                ; On           ; On                 ;
+; Auto Open-Drain Pins                                             ; On           ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off          ; Off                ;
+; Auto ROM Replacement                                             ; On           ; On                 ;
+; Auto RAM Replacement                                             ; On           ; On                 ;
+; Auto DSP Block Replacement                                       ; On           ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto         ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto         ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On           ; On                 ;
+; Strict RAM Replacement                                           ; Off          ; Off                ;
+; Allow Synchronous Control Signals                                ; On           ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off          ; Off                ;
+; Auto RAM Block Balancing                                         ; On           ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off          ; Off                ;
+; Auto Resource Sharing                                            ; Off          ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off          ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off          ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off          ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On           ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off          ; Off                ;
+; Timing-Driven Synthesis                                          ; On           ; On                 ;
+; Report Parameter Settings                                        ; On           ; On                 ;
+; Report Source Assignments                                        ; On           ; On                 ;
+; Report Connectivity Checks                                       ; On           ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off          ; Off                ;
+; Synchronization Register Chain Length                            ; 2            ; 2                  ;
+; HDL message level                                                ; Level2       ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off          ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000         ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000         ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100          ; 100                ;
+; Clock MUX Protection                                             ; On           ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off          ; Off                ;
+; Block Design Naming                                              ; Auto         ; Auto               ;
+; SDC constraint protection                                        ; Off          ; Off                ;
+; Synthesis Effort                                                 ; Auto         ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On           ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off          ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium       ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto         ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On           ; On                 ;
++------------------------------------------------------------------+--------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processor 9            ;   0.0%      ;
+;     Processors 10-16       ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                           ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------+---------+
+; SSeg.v                           ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/SSeg.v                    ;         ;
+; Riego.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v                   ;         ;
+; Multiplicador.v                  ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Multiplicador.v           ;         ;
+; DivF.v                           ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/DivF.v                    ;         ;
+; CronoRiego.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/CronoRiego.v              ;         ;
+; Cronometro.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Cronometro.v              ;         ;
+; Control.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Control.v                 ;         ;
+; BCD2SSeg.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/BCD2SSeg.v                ;         ;
+; Usend.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Usend.v                   ;         ;
+; UART_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/UART_tx.v                 ;         ;
+; UART_baudrate_generator.v        ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/UART_baudrate_generator.v ;         ;
+; TwoRegToChar.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/TwoRegToChar.v            ;         ;
+; TOPSendder.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/TOPSendder.v              ;         ;
+; Main.v                           ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v                    ;         ;
+; LCD16X2.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/LCD16X2.v                 ;         ;
+; I2CLCDRW.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/I2CLCDRW.v                ;         ;
+; DivFKHzK.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/DivFKHzK.v                ;         ;
+; DivFKHz.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/DivFKHz.v                 ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimated Total logic elements              ; 2,074           ;
+;                                             ;                 ;
+; Total combinational functions               ; 2052            ;
+; Logic element usage by number of LUT inputs ;                 ;
+;     -- 4 input functions                    ; 1074            ;
+;     -- 3 input functions                    ; 371             ;
+;     -- <=2 input functions                  ; 607             ;
+;                                             ;                 ;
+; Logic elements by mode                      ;                 ;
+;     -- normal mode                          ; 1568            ;
+;     -- arithmetic mode                      ; 484             ;
+;                                             ;                 ;
+; Total registers                             ; 759             ;
+;     -- Dedicated logic registers            ; 759             ;
+;     -- I/O registers                        ; 0               ;
+;                                             ;                 ;
+; I/O pins                                    ; 34              ;
+;                                             ;                 ;
+; Embedded Multiplier 9-bit elements          ; 0               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; DivFKHz:Reloj|S ;
+; Maximum fan-out                             ; 430             ;
+; Total fan-out                               ; 8754            ;
+; Average fan-out                             ; 3.04            ;
++---------------------------------------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                               ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------+-------------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                            ; Entity Name             ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------+-------------------------+--------------+
+; |Main                                        ; 2052 (1177)         ; 759 (401)                 ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |Main                                                                                          ; Main                    ; work         ;
+;    |Control:Salidas|                         ; 261 (4)             ; 189 (5)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas                                                                          ; Control                 ; work         ;
+;       |CronoRiego:RiegoPrincipal|            ; 191 (0)             ; 135 (0)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal                                                ; CronoRiego              ; work         ;
+;          |Cronometro:Crono|                  ; 92 (40)             ; 52 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono                               ; Cronometro              ; work         ;
+;             |SSeg:Display|                   ; 52 (23)             ; 32 (15)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display                  ; SSeg                    ; work         ;
+;                |BCD2SSeg:Display|            ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|BCD2SSeg:Display ; BCD2SSeg                ; work         ;
+;                |DivFKHzK:DivFKHz|            ; 22 (22)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz ; DivFKHzK                ; work         ;
+;          |DivF:Seconds|                      ; 27 (27)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds                                   ; DivF                    ; work         ;
+;          |Riego:R|                           ; 72 (23)             ; 56 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R                                        ; Riego                   ; work         ;
+;             |Multiplicador:Multiplicar|      ; 49 (49)             ; 40 (40)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar              ; Multiplicador           ; work         ;
+;       |DivF:Segundos|                        ; 8 (8)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|DivF:Segundos                                                            ; DivF                    ; work         ;
+;       |Riego:RiegoPesticida|                 ; 58 (23)             ; 48 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|Riego:RiegoPesticida                                                     ; Riego                   ; work         ;
+;          |Multiplicador:Multiplicar|         ; 35 (35)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar                           ; Multiplicador           ; work         ;
+;    |DivFKHz:Reloj|                           ; 17 (17)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|DivFKHz:Reloj                                                                            ; DivFKHz                 ; work         ;
+;    |LCD16X2:Displa|                          ; 369 (313)           ; 66 (34)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|LCD16X2:Displa                                                                           ; LCD16X2                 ; work         ;
+;       |DivFKHz:Clock25KHz|                   ; 5 (5)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|LCD16X2:Displa|DivFKHz:Clock25KHz                                                        ; DivFKHz                 ; work         ;
+;       |I2CLCDRW:I2C|                         ; 51 (51)             ; 31 (31)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|LCD16X2:Displa|I2CLCDRW:I2C                                                              ; I2CLCDRW                ; work         ;
+;    |TwoRegToChar:I2C|                        ; 139 (139)           ; 28 (28)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|TwoRegToChar:I2C                                                                         ; TwoRegToChar            ; work         ;
+;    |Usend:comb_3|                            ; 89 (32)             ; 58 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Usend:comb_3                                                                             ; Usend                   ; work         ;
+;       |TOPSendder:UartTX|                    ; 57 (0)              ; 39 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Usend:comb_3|TOPSendder:UartTX                                                           ; TOPSendder              ; work         ;
+;          |UART_BaudRate_generator:I_BAUDGEN| ; 21 (21)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN                         ; UART_BaudRate_generator ; work         ;
+;          |UART_rs232_tx:I_RS232TX|           ; 36 (36)             ; 23 (23)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Main|Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX                                   ; UART_rs232_tx           ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Main|Status                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
++------------------------------+-------------------------+---------------------+---------------------+---------------------------+---------------------------+----------------------+----------------------+----------------------------+---------------------+---------------------------+------------------+------------------------+-------------------+------------------+------------------------------+----------------+----------------------+------------------+---------------------+------------------+------------------+--------------------+
+; Name                         ; Status.ControlPesticida ; Status.ControlRiego ; Status.ControlServo ; Status.ControlCalefaccion ; Status.ControlIluminacion ; Status.ControlManual ; Status.AINTENSIDADUV ; Status.AJUSTESINTENSIDADUV ; Status.ATEMPERATURA ; Status.AJUSTESTEMPERATURA ; Status.AHUMEDADA ; Status.AJUSTESHUMEDADA ; Status.ACANTIDADA ; Status.AHUMEDADS ; Status.AJUSTEHUMEDADCANTIDAD ; Status.AJUSTES ; Status.IINTENSIDADUV ; Status.ICALIDADA ; Status.ITEMPERATURA ; Status.IHUMEDADA ; Status.IHUMEDADS ; Status.00000000000 ;
++------------------------------+-------------------------+---------------------+---------------------+---------------------------+---------------------------+----------------------+----------------------+----------------------------+---------------------+---------------------------+------------------+------------------------+-------------------+------------------+------------------------------+----------------+----------------------+------------------+---------------------+------------------+------------------+--------------------+
+; Status.00000000000           ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 0                  ;
+; Status.IHUMEDADS             ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 1                ; 1                  ;
+; Status.IHUMEDADA             ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 1                ; 0                ; 1                  ;
+; Status.ITEMPERATURA          ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 1                   ; 0                ; 0                ; 1                  ;
+; Status.ICALIDADA             ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 1                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.IINTENSIDADUV         ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 1                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AJUSTES               ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 1              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AJUSTEHUMEDADCANTIDAD ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 1                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AHUMEDADS             ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 1                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ACANTIDADA            ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 1                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AJUSTESHUMEDADA       ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 1                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AHUMEDADA             ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 1                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AJUSTESTEMPERATURA    ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 1                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ATEMPERATURA          ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 1                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AJUSTESINTENSIDADUV   ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 1                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.AINTENSIDADUV         ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 1                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ControlManual         ; 0                       ; 0                   ; 0                   ; 0                         ; 0                         ; 1                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ControlIluminacion    ; 0                       ; 0                   ; 0                   ; 0                         ; 1                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ControlCalefaccion    ; 0                       ; 0                   ; 0                   ; 1                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ControlServo          ; 0                       ; 0                   ; 1                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ControlRiego          ; 0                       ; 1                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
+; Status.ControlPesticida      ; 1                       ; 0                   ; 0                   ; 0                         ; 0                         ; 0                    ; 0                    ; 0                          ; 0                   ; 0                         ; 0                ; 0                      ; 0                 ; 0                ; 0                            ; 0              ; 0                    ; 0                ; 0                   ; 0                ; 0                ; 1                  ;
++------------------------------+-------------------------+---------------------+---------------------+---------------------------+---------------------------+----------------------+----------------------+----------------------------+---------------------+---------------------------+------------------+------------------------+-------------------+------------------+------------------------------+----------------+----------------------+------------------+---------------------+------------------+------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------+
+; State Machine - |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Status ;
++--------------+--------------+------------+--------------+--------------+---------------------------------+
+; Name         ; Status.SHIFT ; Status.ADD ; Status.CHECK ; Status.START ; Status.END                      ;
++--------------+--------------+------------+--------------+--------------+---------------------------------+
+; Status.START ; 0            ; 0          ; 0            ; 0            ; 0                               ;
+; Status.CHECK ; 0            ; 0          ; 1            ; 1            ; 0                               ;
+; Status.ADD   ; 0            ; 1          ; 0            ; 1            ; 0                               ;
+; Status.SHIFT ; 1            ; 0          ; 0            ; 1            ; 0                               ;
+; Status.END   ; 0            ; 0          ; 0            ; 1            ; 1                               ;
++--------------+--------------+------------+--------------+--------------+---------------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------+
+; State Machine - |Main|Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Status ;
++--------------+--------------+------------+--------------+--------------+--------------------+
+; Name         ; Status.SHIFT ; Status.ADD ; Status.CHECK ; Status.START ; Status.END         ;
++--------------+--------------+------------+--------------+--------------+--------------------+
+; Status.START ; 0            ; 0          ; 0            ; 0            ; 0                  ;
+; Status.CHECK ; 0            ; 0          ; 1            ; 1            ; 0                  ;
+; Status.ADD   ; 0            ; 1          ; 0            ; 1            ; 0                  ;
+; Status.SHIFT ; 1            ; 0          ; 0            ; 1            ; 0                  ;
+; Status.END   ; 0            ; 0          ; 0            ; 1            ; 1                  ;
++--------------+--------------+------------+--------------+--------------+--------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Main|TwoRegToChar:I2C|RegistroEntero1                                                                                                                                                                                                                                                 ;
++--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+; Name                     ; RegistroEntero1.00001001 ; RegistroEntero1.00001000 ; RegistroEntero1.00000111 ; RegistroEntero1.00000110 ; RegistroEntero1.00000101 ; RegistroEntero1.00000100 ; RegistroEntero1.00000011 ; RegistroEntero1.00000010 ; RegistroEntero1.00000001 ; RegistroEntero1.00000000 ;
++--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+; RegistroEntero1.00000000 ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ;
+; RegistroEntero1.00000001 ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ; 1                        ;
+; RegistroEntero1.00000010 ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ; 0                        ; 1                        ;
+; RegistroEntero1.00000011 ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ; 0                        ; 0                        ; 1                        ;
+; RegistroEntero1.00000100 ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ; 0                        ; 0                        ; 0                        ; 1                        ;
+; RegistroEntero1.00000101 ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ;
+; RegistroEntero1.00000110 ; 0                        ; 0                        ; 0                        ; 1                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ;
+; RegistroEntero1.00000111 ; 0                        ; 0                        ; 1                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ;
+; RegistroEntero1.00001000 ; 0                        ; 1                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ;
+; RegistroEntero1.00001001 ; 1                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ;
++--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Main|LCD16X2:Displa|I2CLCDRW:I2C|State                                                                                                            ;
++-------------------+------------------+-------------------+------------------+------------------+----------------+------------------+-------------------+-----------+
+; Name              ; State.STATE_STOP ; State.STATE_WACK2 ; State.STATE_DATA ; State.STATE_WACK ; State.STATE_RW ; State.STATE_ADDR ; State.STATE_START ; State.000 ;
++-------------------+------------------+-------------------+------------------+------------------+----------------+------------------+-------------------+-----------+
+; State.000         ; 0                ; 0                 ; 0                ; 0                ; 0              ; 0                ; 0                 ; 0         ;
+; State.STATE_START ; 0                ; 0                 ; 0                ; 0                ; 0              ; 0                ; 1                 ; 1         ;
+; State.STATE_ADDR  ; 0                ; 0                 ; 0                ; 0                ; 0              ; 1                ; 0                 ; 1         ;
+; State.STATE_RW    ; 0                ; 0                 ; 0                ; 0                ; 1              ; 0                ; 0                 ; 1         ;
+; State.STATE_WACK  ; 0                ; 0                 ; 0                ; 1                ; 0              ; 0                ; 0                 ; 1         ;
+; State.STATE_DATA  ; 0                ; 0                 ; 1                ; 0                ; 0              ; 0                ; 0                 ; 1         ;
+; State.STATE_WACK2 ; 0                ; 1                 ; 0                ; 0                ; 0              ; 0                ; 0                 ; 1         ;
+; State.STATE_STOP  ; 1                ; 0                 ; 0                ; 0                ; 0              ; 0                ; 0                 ; 1         ;
++-------------------+------------------+-------------------+------------------+------------------+----------------+------------------+-------------------+-----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                        ;
++-----------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+; Register name                                                                           ; Reason for Removal                                                              ;
++-----------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+; TXData1[3..7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR32[0..3]                                                                         ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR32[4]                                                                            ; Stuck at VCC due to stuck port data_in                                          ;
+; I2CCHAR32[5..7]                                                                         ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR31[7]                                                                            ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR30[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR29[5]                                                                            ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR24[7]                                                                            ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR23[7]                                                                            ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR22[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR21[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR20[1,5,7]                                                                        ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR19[3,5,7]                                                                        ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR18[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR17[0,1,3]                                                                        ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR17[4]                                                                            ; Stuck at VCC due to stuck port data_in                                          ;
+; I2CCHAR17[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR16[6,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR15[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR14[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR13[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR12[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR11[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR10[5,7]                                                                          ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR9[5,7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR8[5,7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR7[5,7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR6[5]                                                                             ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR6[6]                                                                             ; Stuck at VCC due to stuck port data_in                                          ;
+; I2CCHAR6[7]                                                                             ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR5[5,7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR4[5,7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR3[5,7]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR2[1,2,5,7]                                                                       ; Stuck at GND due to stuck port data_in                                          ;
+; I2CCHAR1[0,1,3,5,7]                                                                     ; Stuck at GND due to stuck port data_in                                          ;
+; I2CAddress[0..2]                                                                        ; Stuck at VCC due to stuck port data_in                                          ;
+; I2CAddress[3,4]                                                                         ; Stuck at GND due to stuck port data_in                                          ;
+; I2CAddress[5]                                                                           ; Stuck at VCC due to stuck port data_in                                          ;
+; I2CAddress[6]                                                                           ; Stuck at GND due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char2[6]                                                               ; Stuck at GND due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char2[4,5]                                                             ; Stuck at VCC due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char3[6,7]                                                             ; Stuck at GND due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char3[4,5]                                                             ; Stuck at VCC due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char2[7]                                                               ; Stuck at GND due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char1[4,5]                                                             ; Stuck at VCC due to stuck port data_in                                          ;
+; TwoRegToChar:I2C|Char1[6,7]                                                             ; Stuck at GND due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[0..2]                                             ; Stuck at VCC due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[3,4]                                              ; Stuck at GND due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[5]                                                ; Stuck at VCC due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[6]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|A[0]                     ; Merged with Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[7] ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Package[2,8,9]                                         ; Merged with LCD16X2:Displa|I2CLCDRW:I2C|Save_RW                                 ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Package[1,3..7]                                        ; Merged with LCD16X2:Displa|I2CLCDRW:I2C|Save_Package[0]                         ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|A[1]                     ; Merged with Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[6] ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[15]                                           ; Merged with DivFKHz:Reloj|counter[15]                                           ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[14]                                           ; Merged with DivFKHz:Reloj|counter[14]                                           ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[13]                                           ; Merged with DivFKHz:Reloj|counter[13]                                           ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[12]                                           ; Merged with DivFKHz:Reloj|counter[12]                                           ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[11]                                           ; Merged with DivFKHz:Reloj|counter[11]                                           ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[10]                                           ; Merged with DivFKHz:Reloj|counter[10]                                           ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[9]                                            ; Merged with DivFKHz:Reloj|counter[9]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[8]                                            ; Merged with DivFKHz:Reloj|counter[8]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[7]                                            ; Merged with DivFKHz:Reloj|counter[7]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[6]                                            ; Merged with DivFKHz:Reloj|counter[6]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[5]                                            ; Merged with DivFKHz:Reloj|counter[5]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[4]                                            ; Merged with DivFKHz:Reloj|counter[4]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[3]                                            ; Merged with DivFKHz:Reloj|counter[3]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[2]                                            ; Merged with DivFKHz:Reloj|counter[2]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[1]                                            ; Merged with DivFKHz:Reloj|counter[1]                                            ;
+; LCD16X2:Displa|DivFKHz:Clock25KHz|counter[0]                                            ; Merged with DivFKHz:Reloj|counter[0]                                            ;
+; Control:Salidas|DivF:Segundos|counter[25]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[25]  ;
+; Control:Salidas|DivF:Segundos|counter[24]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[24]  ;
+; Control:Salidas|DivF:Segundos|counter[23]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[23]  ;
+; Control:Salidas|DivF:Segundos|counter[22]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[22]  ;
+; Control:Salidas|DivF:Segundos|counter[21]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[21]  ;
+; Control:Salidas|DivF:Segundos|counter[20]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[20]  ;
+; Control:Salidas|DivF:Segundos|counter[19]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[19]  ;
+; Control:Salidas|DivF:Segundos|counter[18]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[18]  ;
+; Control:Salidas|DivF:Segundos|counter[17]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[17]  ;
+; Control:Salidas|DivF:Segundos|counter[16]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[16]  ;
+; Control:Salidas|DivF:Segundos|counter[15]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[15]  ;
+; Control:Salidas|DivF:Segundos|counter[14]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[14]  ;
+; Control:Salidas|DivF:Segundos|counter[13]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[13]  ;
+; Control:Salidas|DivF:Segundos|counter[12]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[12]  ;
+; Control:Salidas|DivF:Segundos|counter[11]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[11]  ;
+; Control:Salidas|DivF:Segundos|counter[10]                                               ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[10]  ;
+; Control:Salidas|DivF:Segundos|counter[9]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[9]   ;
+; Control:Salidas|DivF:Segundos|counter[8]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[8]   ;
+; Control:Salidas|DivF:Segundos|counter[7]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[7]   ;
+; Control:Salidas|DivF:Segundos|counter[6]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[6]   ;
+; Control:Salidas|DivF:Segundos|counter[5]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[5]   ;
+; Control:Salidas|DivF:Segundos|counter[4]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[4]   ;
+; Control:Salidas|DivF:Segundos|counter[3]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[3]   ;
+; Control:Salidas|DivF:Segundos|counter[2]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[2]   ;
+; Control:Salidas|DivF:Segundos|counter[1]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[1]   ;
+; Control:Salidas|DivF:Segundos|counter[0]                                                ; Merged with Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|counter[0]   ;
+; I2CCHAR16[1..3,5]                                                                       ; Merged with I2CCHAR16[0]                                                        ;
+; I2CCHAR17[2,6]                                                                          ; Merged with I2CCHAR16[0]                                                        ;
+; I2CCHAR18[3]                                                                            ; Merged with I2CCHAR16[0]                                                        ;
+; I2CCHAR31[1,3,6]                                                                        ; Merged with I2CCHAR16[0]                                                        ;
+; I2CCHAR26[7]                                                                            ; Merged with I2CCHAR25[7]                                                        ;
+; I2CCHAR27[7]                                                                            ; Merged with I2CCHAR25[7]                                                        ;
+; I2CCHAR28[7]                                                                            ; Merged with I2CCHAR25[7]                                                        ;
+; I2CCHAR24[3]                                                                            ; Merged with I2CCHAR24[1]                                                        ;
+; I2CCHAR22[3]                                                                            ; Merged with I2CCHAR22[2]                                                        ;
+; I2CCHAR23[1]                                                                            ; Merged with I2CCHAR21[3]                                                        ;
+; I2CCHAR21[6]                                                                            ; Merged with I2CCHAR20[6]                                                        ;
+; I2CCHAR18[2]                                                                            ; Merged with I2CCHAR18[1]                                                        ;
+; I2CCHAR21[1]                                                                            ; Merged with I2CCHAR18[1]                                                        ;
+; I2CCHAR23[5]                                                                            ; Merged with I2CCHAR18[1]                                                        ;
+; I2CCHAR14[6]                                                                            ; Merged with I2CCHAR14[2]                                                        ;
+; I2CCHAR8[6]                                                                             ; Merged with I2CCHAR1[4]                                                         ;
+; I2CCHAR15[1..3,6]                                                                       ; Merged with I2CCHAR15[0]                                                        ;
+; I2CCHAR1[2,6]                                                                           ; Merged with I2CCHAR15[0]                                                        ;
+; I2CCHAR2[6]                                                                             ; Merged with I2CCHAR2[3]                                                         ;
+; I2CCHAR31[2]                                                                            ; Merged with I2CCHAR31[0]                                                        ;
+; I2CCHAR25[6]                                                                            ; Merged with I2CCHAR24[6]                                                        ;
+; I2CCHAR27[6]                                                                            ; Merged with I2CCHAR24[6]                                                        ;
+; I2CCHAR25[5]                                                                            ; Merged with I2CCHAR21[2]                                                        ;
+; I2CCHAR19[0]                                                                            ; Merged with I2CCHAR18[6]                                                        ;
+; I2CCHAR30[1]                                                                            ; Merged with I2CCHAR29[0]                                                        ;
+; I2CCHAR24[5]                                                                            ; Merged with I2CCHAR19[1]                                                        ;
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|A[0]        ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[7]                     ; Stuck at GND due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_RW                                                     ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|A[1]        ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[1..6]                  ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|A[2]                     ; Merged with Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[0] ;
+; I2CCHAR25[7]                                                                            ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Result[0,1] ; Stuck at GND due to stuck port data_in                                          ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Result[0,1]              ; Stuck at GND due to stuck port data_in                                          ;
+; LCD16X2:Displa|DataI[3]                                                                 ; Stuck at VCC due to stuck port data_in                                          ;
+; LCD16X2:Displa|DataI[1]                                                                 ; Stuck at GND due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Data[3]                                                ; Stuck at VCC due to stuck port data_in                                          ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_Data[1]                                                ; Stuck at GND due to stuck port data_in                                          ;
+; RegistroEntero[7]                                                                       ; Stuck at GND due to stuck port data_in                                          ;
+; RegistroDecimal[4..7]                                                                   ; Stuck at GND due to stuck port data_in                                          ;
+; TXData3[6]                                                                              ; Stuck at GND due to stuck port data_in                                          ;
+; TXData2[7]                                                                              ; Stuck at GND due to stuck port data_in                                          ;
+; TXData3[7]                                                                              ; Stuck at GND due to stuck port data_in                                          ;
+; Usend:comb_3|TxData[7]                                                                  ; Stuck at GND due to stuck port data_in                                          ;
+; Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX|in_data[7]                       ; Stuck at GND due to stuck port data_in                                          ;
+; TXData3[5]                                                                              ; Merged with TXData3[4]                                                          ;
+; Status~24                                                                               ; Lost fanout                                                                     ;
+; Status~25                                                                               ; Lost fanout                                                                     ;
+; Status~26                                                                               ; Lost fanout                                                                     ;
+; Status~27                                                                               ; Lost fanout                                                                     ;
+; Status~28                                                                               ; Lost fanout                                                                     ;
+; Status~29                                                                               ; Lost fanout                                                                     ;
+; Status~30                                                                               ; Lost fanout                                                                     ;
+; Status~31                                                                               ; Lost fanout                                                                     ;
+; Status~32                                                                               ; Lost fanout                                                                     ;
+; Status~33                                                                               ; Lost fanout                                                                     ;
+; Status~34                                                                               ; Lost fanout                                                                     ;
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Status~7    ; Lost fanout                                                                     ;
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Status~8    ; Lost fanout                                                                     ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Status~7                 ; Lost fanout                                                                     ;
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Status~8                 ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~12                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~13                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~14                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~15                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~16                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~17                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~18                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1~19                                                     ; Lost fanout                                                                     ;
+; LCD16X2:Displa|I2CLCDRW:I2C|State~7                                                     ; Lost fanout                                                                     ;
+; LCD16X2:Displa|I2CLCDRW:I2C|State~8                                                     ; Lost fanout                                                                     ;
+; LCD16X2:Displa|I2CLCDRW:I2C|State~9                                                     ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero1.00000001                                               ; Lost fanout                                                                     ;
+; TwoRegToChar:I2C|RegistroEntero2[7]                                                     ; Stuck at GND due to stuck port data_in                                          ;
+; Total Number of Removed Registers = 249                                                 ;                                                                                 ;
++-----------------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                     ;
++----------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+; Register name                                                                    ; Reason for Removal        ; Registers Removed due to This Register                                           ;
++----------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[7]              ; Stuck at GND              ; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[6],             ;
+;                                                                                  ; due to stuck port data_in ; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[5],             ;
+;                                                                                  ;                           ; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[4],             ;
+;                                                                                  ;                           ; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[3],             ;
+;                                                                                  ;                           ; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[2],             ;
+;                                                                                  ;                           ; Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|B[1]              ;
+; TXData1[7]                                                                       ; Stuck at GND              ; Usend:comb_3|TxData[7],                                                          ;
+;                                                                                  ; due to stuck port data_in ; Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX|in_data[7]                ;
+; I2CAddress[0]                                                                    ; Stuck at VCC              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[0]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; I2CAddress[1]                                                                    ; Stuck at VCC              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[1]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; I2CAddress[2]                                                                    ; Stuck at VCC              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[2]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; I2CAddress[3]                                                                    ; Stuck at GND              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[3]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; I2CAddress[4]                                                                    ; Stuck at GND              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[4]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; I2CAddress[5]                                                                    ; Stuck at VCC              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[5]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; I2CAddress[6]                                                                    ; Stuck at GND              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Addr[6]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; TwoRegToChar:I2C|Char1[7]                                                        ; Stuck at GND              ; I2CCHAR25[7]                                                                     ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|A[0] ; Stuck at GND              ; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|A[1] ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; LCD16X2:Displa|I2CLCDRW:I2C|Save_RW                                              ; Stuck at GND              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Data[1]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; LCD16X2:Displa|DataI[3]                                                          ; Stuck at VCC              ; LCD16X2:Displa|I2CLCDRW:I2C|Save_Data[3]                                         ;
+;                                                                                  ; due to stuck port data_in ;                                                                                  ;
+; TwoRegToChar:I2C|RegistroEntero1~12                                              ; Lost Fanouts              ; TwoRegToChar:I2C|RegistroEntero1.00000001                                        ;
++----------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 759   ;
+; Number of registers using Synchronous Clear  ; 237   ;
+; Number of registers using Synchronous Load   ; 33    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 343   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------+
+; Inverted Register Statistics                                               ;
++------------------------------------------------------------------+---------+
+; Inverted Register                                                ; Fan out ;
++------------------------------------------------------------------+---------+
+; Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Valvula        ; 16      ;
+; Control:Salidas|Riego:RiegoPesticida|Valvula                     ; 1       ;
+; Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX|start_bit ; 5       ;
+; DelayKeyEnter[3]                                                 ; 2       ;
+; DelayKeyEnter[5]                                                 ; 2       ;
+; DelayKeyEnter[7]                                                 ; 2       ;
+; DelayKeyEnter[8]                                                 ; 2       ;
+; DelayKeyEnter[13]                                                ; 2       ;
+; DelayKeyEnter[14]                                                ; 2       ;
+; ArduinoStart                                                     ; 5       ;
+; Usend:comb_3|TxEn                                                ; 2       ;
+; DelayKeyLeft[3]                                                  ; 2       ;
+; DelayKeyLeft[5]                                                  ; 2       ;
+; DelayKeyLeft[7]                                                  ; 2       ;
+; DelayKeyLeft[8]                                                  ; 2       ;
+; DelayKeyLeft[13]                                                 ; 2       ;
+; DelayKeyLeft[14]                                                 ; 2       ;
+; DelayKeyEscape[3]                                                ; 2       ;
+; DelayKeyEscape[5]                                                ; 2       ;
+; DelayKeyEscape[7]                                                ; 2       ;
+; DelayKeyEscape[8]                                                ; 2       ;
+; DelayKeyEscape[13]                                               ; 2       ;
+; DelayKeyEscape[14]                                               ; 2       ;
+; DelayKeyRight[3]                                                 ; 2       ;
+; DelayKeyRight[5]                                                 ; 2       ;
+; DelayKeyRight[7]                                                 ; 2       ;
+; DelayKeyRight[8]                                                 ; 2       ;
+; DelayKeyRight[13]                                                ; 2       ;
+; DelayKeyRight[14]                                                ; 2       ;
+; DelayKeyDown[3]                                                  ; 2       ;
+; DelayKeyDown[5]                                                  ; 2       ;
+; DelayKeyDown[7]                                                  ; 2       ;
+; DelayKeyDown[8]                                                  ; 2       ;
+; DelayKeyDown[13]                                                 ; 2       ;
+; DelayKeyDown[14]                                                 ; 2       ;
+; DelayKeyUp[3]                                                    ; 2       ;
+; DelayKeyUp[5]                                                    ; 2       ;
+; DelayKeyUp[7]                                                    ; 2       ;
+; DelayKeyUp[8]                                                    ; 2       ;
+; DelayKeyUp[13]                                                   ; 2       ;
+; DelayKeyUp[14]                                                   ; 2       ;
+; TXData2[1]                                                       ; 1       ;
+; TXData3[1]                                                       ; 1       ;
+; Save_TemperaturaDec[1]                                           ; 6       ;
+; Save_TemperaturaEnt[4]                                           ; 1       ;
+; Save_TemperaturaEnt[2]                                           ; 1       ;
+; Save_HumedadAireDec[1]                                           ; 6       ;
+; Save_HumedadAireDec[2]                                           ; 4       ;
+; Save_HumedadAireEnt[1]                                           ; 1       ;
+; Save_HumedadAireEnt[6]                                           ; 1       ;
+; Save_HumedadSueloEnt[0]                                          ; 1       ;
+; Save_HumedadSueloDec[1]                                          ; 5       ;
+; Save_HumedadSueloEnt[5]                                          ; 1       ;
+; Save_IntensidadUVDec[2]                                          ; 4       ;
+; Save_IntensidadUVEnt[1]                                          ; 1       ;
+; Save_IntensidadUVEnt[3]                                          ; 1       ;
+; Save_HumedadAireDec[0]                                           ; 4       ;
+; Save_HumedadSueloDec[0]                                          ; 4       ;
+; Save_IntensidadUVDec[0]                                          ; 4       ;
+; TXData2[2]                                                       ; 1       ;
+; TiempoRiego[0]                                                   ; 6       ;
+; TXData2[3]                                                       ; 1       ;
+; TXData3[4]                                                       ; 2       ;
+; TXData2[4]                                                       ; 1       ;
+; Total number of inverted registers = 64                          ;         ;
++------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |Main|LCD16X2:Displa|Delay[8]                                                                ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|B[5]       ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Main|Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX|in_data[5]                      ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Main|Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX|Bit[0]                          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|Segundos1[2]                ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|Horas0[2]                   ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|Minutos1[0]                 ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_HumedadSueloDec[2]                                                                ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_HumedadAireDec[3]                                                                 ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_TemperaturaDec[6]                                                                 ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_IntensidadUVDec[7]                                                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR16[4]                                                                           ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Result[11] ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |Main|Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Result[10]              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|Usend:comb_3|CounterTX[1]                                                              ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|Segundos0[2]                ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|Minutos0[1]                 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main|Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX|counter[2]                      ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; Yes        ; |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|BCD[1]         ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |Main|TiempoRiego[1]                                                                         ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_HumedadSueloEnt[2]                                                                ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_HumedadAireEnt[2]                                                                 ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_TemperaturaEnt[3]                                                                 ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Main|Save_IntensidadUVEnt[5]                                                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR26[6]                                                                           ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Main|Usend:comb_3|TxData[6]                                                                 ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Main|Usend:comb_3|TxData[0]                                                                 ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |Main|TXData3[2]                                                                             ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Main|DelayKeyEnter[11]                                                                      ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Main|DelayKeyRight[1]                                                                       ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Main|DelayKeyEscape[9]                                                                      ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |Main|LCD16X2:Displa|I2CLCDRW:I2C|Counter_Package[5]                                         ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |Main|LCD16X2:Displa|I2CLCDRW:I2C|Save_Data[3]                                               ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |Main|LCD16X2:Displa|I2CLCDRW:I2C|Save_Data[6]                                               ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Main|DelayKeyUp[2]                                                                          ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |Main|DelayKeyDown[0]                                                                        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Main|PosSumm[1]                                                                             ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; Yes        ; |Main|LCD16X2:Displa|I2CLCDRW:I2C|Data_Count[2]                                              ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 48 LEs               ; 8 LEs                  ; Yes        ; |Main|RegistroDecimal[2]                                                                     ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |Main|RegistroEntero[4]                                                                      ;
+; 2048:1             ; 2 bits    ; 2730 LEs      ; 512 LEs              ; 2218 LEs               ; Yes        ; |Main|LCD16X2:Displa|DataI[2]                                                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR18[4]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR18[6]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR15[4]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR31[0]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR30[6]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR2[3]                                                                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR24[6]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR22[1]                                                                           ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Main|I2CCHAR26[2]                                                                           ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Main|I2CCHAR26[1]                                                                           ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Main|I2CCHAR27[3]                                                                           ;
+; 9:1                ; 10 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Main|DelayKeyLeft[12]                                                                       ;
+; 13:1               ; 5 bits    ; 40 LEs        ; 5 LEs                ; 35 LEs                 ; Yes        ; |Main|InstruccionesI2C[3]                                                                    ;
+; 13:1               ; 22 bits   ; 176 LEs       ; 0 LEs                ; 176 LEs                ; Yes        ; |Main|Refresh[1]                                                                             ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Main|Save_HumedadSueloDec[0]                                                                ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Main|Save_HumedadAireDec[1]                                                                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Main|Save_IntensidadUVDec[2]                                                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Main|Save_HumedadAireEnt[1]                                                                 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Main|Save_TemperaturaEnt[2]                                                                 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Main|Save_IntensidadUVEnt[1]                                                                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |Main|TXData2[2]                                                                             ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |Main|DelayKeyEnter[14]                                                                      ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |Main|DelayKeyRight[3]                                                                       ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |Main|DelayKeyEscape[7]                                                                      ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |Main|DelayKeyUp[14]                                                                         ;
+; 6:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |Main|DelayKeyDown[5]                                                                        ;
+; 9:1                ; 6 bits    ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |Main|DelayKeyLeft[3]                                                                        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Main|PosSumm                                                                                ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Main|TiempoRiego                                                                            ;
+; 3:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; No         ; |Main|Save_HumedadSueloEnt                                                                   ;
+; 65:1               ; 10 bits   ; 430 LEs       ; 180 LEs              ; 250 LEs                ; No         ; |Main|TwoRegToChar:I2C|RegistroEntero1                                                       ;
+; 65:1               ; 2 bits    ; 86 LEs        ; 14 LEs               ; 72 LEs                 ; No         ; |Main|TwoRegToChar:I2C|RegistroEntero2                                                       ;
+; 65:1               ; 2 bits    ; 86 LEs        ; 12 LEs               ; 74 LEs                 ; No         ; |Main|TwoRegToChar:I2C|RegistroEntero2                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Main ;
++-----------------------+-------+--------------------------------------+
+; Parameter Name        ; Value ; Type                                 ;
++-----------------------+-------+--------------------------------------+
+; INFORMACION           ; 0     ; Signed Integer                       ;
+; IHUMEDADS             ; 1     ; Signed Integer                       ;
+; IHUMEDADA             ; 2     ; Signed Integer                       ;
+; ITEMPERATURA          ; 3     ; Signed Integer                       ;
+; ICALIDADA             ; 4     ; Signed Integer                       ;
+; IINTENSIDADUV         ; 5     ; Signed Integer                       ;
+; AJUSTES               ; 6     ; Signed Integer                       ;
+; AJUSTEHUMEDADCANTIDAD ; 7     ; Signed Integer                       ;
+; AHUMEDADS             ; 8     ; Signed Integer                       ;
+; ACANTIDADA            ; 9     ; Signed Integer                       ;
+; AJUSTESHUMEDADA       ; 10    ; Signed Integer                       ;
+; AHUMEDADA             ; 11    ; Signed Integer                       ;
+; AJUSTESTEMPERATURA    ; 12    ; Signed Integer                       ;
+; ATEMPERATURA          ; 13    ; Signed Integer                       ;
+; AJUSTESINTENSIDADUV   ; 14    ; Signed Integer                       ;
+; AINTENSIDADUV         ; 15    ; Signed Integer                       ;
+; ControlManual         ; 16    ; Signed Integer                       ;
+; ControlIluminacion    ; 17    ; Signed Integer                       ;
+; ControlCalefaccion    ; 18    ; Signed Integer                       ;
+; ControlServo          ; 19    ; Signed Integer                       ;
+; ControlRiego          ; 20    ; Signed Integer                       ;
+; ControlPesticida      ; 21    ; Signed Integer                       ;
++-----------------------+-------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX ;
++----------------+-------+----------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                       ;
++----------------+-------+----------------------------------------------------------------------------+
+; IDLE           ; 0     ; Unsigned Binary                                                            ;
+; WRITE          ; 1     ; Unsigned Binary                                                            ;
++----------------+-------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Control:Salidas|Riego:RiegoPesticida ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; WAIT           ; 0     ; Signed Integer                                           ;
+; RIEGO          ; 1     ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; START          ; 0     ; Signed Integer                                                                     ;
+; CHECK          ; 1     ; Signed Integer                                                                     ;
+; ADD            ; 2     ; Signed Integer                                                                     ;
+; SHIFT          ; 3     ; Signed Integer                                                                     ;
+; END            ; 4     ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; WAIT           ; 0     ; Signed Integer                                                        ;
+; RIEGO          ; 1     ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                            ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+; START          ; 0     ; Signed Integer                                                                                  ;
+; CHECK          ; 1     ; Signed Integer                                                                                  ;
+; ADD            ; 2     ; Signed Integer                                                                                  ;
+; SHIFT          ; 3     ; Signed Integer                                                                                  ;
+; END            ; 4     ; Signed Integer                                                                                  ;
++----------------+-------+-------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display" ;
++-------+-------+----------+--------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                  ;
++-------+-------+----------+--------------------------------------------------------------------------+
+; Sseg6 ; Input ; Info     ; Stuck at GND                                                             ;
+; Sseg7 ; Input ; Info     ; Stuck at GND                                                             ;
+; Sseg8 ; Input ; Info     ; Stuck at GND                                                             ;
++-------+-------+----------+--------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar"                           ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Num1[5..2] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; Num1[1..0] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; Final      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------+
+; Port Connectivity Checks: "Control:Salidas|Riego:RiegoPesticida" ;
++----------------+-------+----------+------------------------------+
+; Port           ; Type  ; Severity ; Details                      ;
++----------------+-------+----------+------------------------------+
+; TimeMult[7..1] ; Input ; Info     ; Stuck at GND                 ;
+; TimeMult[0]    ; Input ; Info     ; Stuck at VCC                 ;
++----------------+-------+----------+------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "LCD16X2:Displa|I2CLCDRW:I2C"                                                                                                                              ;
++---------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                                                                                          ;
++---------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+; DataO         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                              ;
+; RW            ; Input  ; Info     ; Stuck at GND                                                                                                                                     ;
+; Package       ; Input  ; Warning  ; Input port expression (9 bits) is smaller than the input port (10 bits) it drives.  Extra input bit(s) "Package[9..9]" will be connected to GND. ;
+; Package[7..3] ; Input  ; Info     ; Stuck at VCC                                                                                                                                     ;
+; Package[1..0] ; Input  ; Info     ; Stuck at VCC                                                                                                                                     ;
+; Package[9]    ; Input  ; Info     ; Stuck at GND                                                                                                                                     ;
+; Package[3]    ; Input  ; Info     ; Stuck at GND                                                                                                                                     ;
++---------------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN" ;
++-----------------+-------+----------+---------------------------------------------------------+
+; Port            ; Type  ; Severity ; Details                                                 ;
++-----------------+-------+----------+---------------------------------------------------------+
+; BaudRate[15..9] ; Input ; Info     ; Stuck at GND                                            ;
+; BaudRate[5..3]  ; Input ; Info     ; Stuck at GND                                            ;
+; BaudRate[8]     ; Input ; Info     ; Stuck at VCC                                            ;
+; BaudRate[7]     ; Input ; Info     ; Stuck at GND                                            ;
+; BaudRate[6]     ; Input ; Info     ; Stuck at VCC                                            ;
+; BaudRate[2]     ; Input ; Info     ; Stuck at VCC                                            ;
+; BaudRate[1]     ; Input ; Info     ; Stuck at GND                                            ;
+; BaudRate[0]     ; Input ; Info     ; Stuck at VCC                                            ;
++-----------------+-------+----------+---------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX" ;
++-------------+-------+----------+---------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                           ;
++-------------+-------+----------+---------------------------------------------------+
+; NBits[2..0] ; Input ; Info     ; Stuck at GND                                      ;
+; NBits[3]    ; Input ; Info     ; Stuck at VCC                                      ;
++-------------+-------+----------+---------------------------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "Usend:comb_3|TOPSendder:UartTX" ;
++-------+-------+----------+---------------------------------+
+; Port  ; Type  ; Severity ; Details                         ;
++-------+-------+----------+---------------------------------+
+; Rst_n ; Input ; Info     ; Stuck at VCC                    ;
++-------+-------+----------+---------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 34                          ;
+; cycloneiii_ff         ; 759                         ;
+;     ENA               ; 237                         ;
+;     ENA SCLR          ; 106                         ;
+;     SCLR              ; 131                         ;
+;     SLD               ; 33                          ;
+;     plain             ; 252                         ;
+; cycloneiii_lcell_comb ; 2055                        ;
+;     arith             ; 484                         ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 384                         ;
+;         3 data inputs ; 92                          ;
+;     normal            ; 1571                        ;
+;         0 data inputs ; 10                          ;
+;         1 data inputs ; 61                          ;
+;         2 data inputs ; 147                         ;
+;         3 data inputs ; 279                         ;
+;         4 data inputs ; 1074                        ;
+;                       ;                             ;
+; Max LUT depth         ; 14.90                       ;
+; Average LUT depth     ; 7.07                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Mon Dec 14 16:45:14 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Main -c Main
+Info (16303): Aggressive Power optimization mode selected -- dynamic power will be prioritized at the potential cost of reduced timing performance and increased compilation time
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file sseg.v
+    Info (12023): Found entity 1: SSeg File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/SSeg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file riego.v
+    Info (12023): Found entity 1: Riego File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file multiplicadorsseg.v
+    Info (12023): Found entity 1: multiplicadorSseg File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/multiplicadorSseg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file multiplicador.v
+    Info (12023): Found entity 1: Multiplicador File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Multiplicador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divf.v
+    Info (12023): Found entity 1: DivF File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/DivF.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cronoriego.v
+    Info (12023): Found entity 1: CronoRiego File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/CronoRiego.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cronometro.v
+    Info (12023): Found entity 1: Cronometro File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Cronometro.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file control.v
+    Info (12023): Found entity 1: Control File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Control.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file bcd2sseg.v
+    Info (12023): Found entity 1: BCD2SSeg File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/BCD2SSeg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file usend.v
+    Info (12023): Found entity 1: Usend File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Usend.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
+    Info (12023): Found entity 1: UART_rs232_tx File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/UART_tx.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file uart_baudrate_generator.v
+    Info (12023): Found entity 1: UART_BaudRate_generator File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/UART_baudrate_generator.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file tworegtochar.v
+    Info (12023): Found entity 1: TwoRegToChar File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/TwoRegToChar.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file topsendder.v
+    Info (12023): Found entity 1: TOPSendder File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/TOPSendder.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file main.v
+    Info (12023): Found entity 1: Main File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lcd16x2.v
+    Info (12023): Found entity 1: LCD16X2 File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/LCD16X2.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file i2clcdrw.v
+    Info (12023): Found entity 1: I2CLCDRW File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/I2CLCDRW.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divfkhzk.v
+    Info (12023): Found entity 1: DivFKHzK File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/DivFKHzK.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divfkhz.v
+    Info (12023): Found entity 1: DivFKHz File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/DivFKHz.v Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at Main.v(155): instance has no name File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 155
+Info (12127): Elaborating entity "Main" for the top level hierarchy
+Info (12128): Elaborating entity "Usend" for hierarchy "Usend:comb_3" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 155
+Info (12128): Elaborating entity "TOPSendder" for hierarchy "Usend:comb_3|TOPSendder:UartTX" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Usend.v Line: 21
+Info (12128): Elaborating entity "UART_rs232_tx" for hierarchy "Usend:comb_3|TOPSendder:UartTX|UART_rs232_tx:I_RS232TX" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/TOPSendder.v Line: 30
+Info (12128): Elaborating entity "UART_BaudRate_generator" for hierarchy "Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/TOPSendder.v Line: 38
+Info (12128): Elaborating entity "DivFKHz" for hierarchy "DivFKHz:Reloj" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 157
+Info (12128): Elaborating entity "LCD16X2" for hierarchy "LCD16X2:Displa" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 159
+Info (12128): Elaborating entity "I2CLCDRW" for hierarchy "LCD16X2:Displa|I2CLCDRW:I2C" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/LCD16X2.v Line: 77
+Info (12128): Elaborating entity "TwoRegToChar" for hierarchy "TwoRegToChar:I2C" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 161
+Info (12128): Elaborating entity "Control" for hierarchy "Control:Salidas" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Main.v Line: 163
+Info (12128): Elaborating entity "Riego" for hierarchy "Control:Salidas|Riego:RiegoPesticida" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Control.v Line: 41
+Warning (10230): Verilog HDL assignment warning at Riego.v(21): truncated value with size 32 to match size of target (1) File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v Line: 21
+Warning (10230): Verilog HDL assignment warning at Riego.v(33): truncated value with size 32 to match size of target (1) File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v Line: 33
+Warning (10230): Verilog HDL assignment warning at Riego.v(38): truncated value with size 32 to match size of target (1) File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v Line: 38
+Warning (10230): Verilog HDL assignment warning at Riego.v(40): truncated value with size 32 to match size of target (1) File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v Line: 40
+Info (12128): Elaborating entity "Multiplicador" for hierarchy "Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Riego.v Line: 16
+Warning (10230): Verilog HDL assignment warning at Multiplicador.v(23): truncated value with size 32 to match size of target (1) File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Multiplicador.v Line: 23
+Info (12128): Elaborating entity "DivF" for hierarchy "Control:Salidas|DivF:Segundos" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Control.v Line: 42
+Info (12128): Elaborating entity "CronoRiego" for hierarchy "Control:Salidas|CronoRiego:RiegoPrincipal" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Control.v Line: 43
+Info (12128): Elaborating entity "Cronometro" for hierarchy "Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/CronoRiego.v Line: 14
+Info (12128): Elaborating entity "SSeg" for hierarchy "Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/Cronometro.v Line: 26
+Info (12128): Elaborating entity "DivFKHzK" for hierarchy "Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/SSeg.v Line: 26
+Info (12128): Elaborating entity "BCD2SSeg" for hierarchy "Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|BCD2SSeg:Display" File: C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/SSeg.v Line: 27
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 27 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/output_files/Main.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2226 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
+    Info (21059): Implemented 23 output pins
+    Info (21061): Implemented 2192 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4857 megabytes
+    Info: Processing ended: Mon Dec 14 16:45:30 2020
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:27
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Kouzou Akizuki/Desktop/Proyecto Invernadero - Main - Final - Github/output_files/Main.map.smsg.
+
+

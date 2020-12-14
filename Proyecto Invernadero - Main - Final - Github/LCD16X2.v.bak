@@ -1,0 +1,426 @@
+module LCD16X2 (Clock, SDA, SCL, Start, Address, CHAR1, CHAR2, CHAR3, CHAR4, CHAR5, CHAR6, CHAR7, CHAR8, CHAR9, CHAR10, CHAR11, CHAR12, CHAR13, CHAR14, CHAR15, CHAR16, CHAR17, CHAR18, CHAR19, CHAR20, CHAR21, CHAR22, CHAR23, CHAR24, CHAR25, CHAR26, CHAR27, CHAR28, CHAR29, CHAR30, CHAR31, CHAR32, End);
+
+input Clock;
+output SDA;
+output SCL;
+output wire End;
+
+
+input wire Start;
+input wire [6:0] Address;
+
+input wire [7:0] CHAR1;
+input wire [7:0] CHAR2;
+input wire [7:0] CHAR3;
+input wire [7:0] CHAR4;
+input wire [7:0] CHAR5;
+input wire [7:0] CHAR6;
+input wire [7:0] CHAR7;
+input wire [7:0] CHAR8;
+input wire [7:0] CHAR9;
+input wire [7:0] CHAR10;
+input wire [7:0] CHAR11;
+input wire [7:0] CHAR12;
+input wire [7:0] CHAR13;
+input wire [7:0] CHAR14;
+input wire [7:0] CHAR15;
+input wire [7:0] CHAR16;
+
+input wire [7:0] CHAR17;
+input wire [7:0] CHAR18;
+input wire [7:0] CHAR19;
+input wire [7:0] CHAR20;
+input wire [7:0] CHAR21;
+input wire [7:0] CHAR22;
+input wire [7:0] CHAR23;
+input wire [7:0] CHAR24;
+input wire [7:0] CHAR25;
+input wire [7:0] CHAR26;
+input wire [7:0] CHAR27;
+input wire [7:0] CHAR28;
+input wire [7:0] CHAR29;
+input wire [7:0] CHAR30;
+input wire [7:0] CHAR31;
+input wire [7:0] CHAR32;
+
+
+
+reg [7:0] DataI;
+reg [14:0]Delay;
+wire [7:0] DataO;
+wire SDAI;
+wire S;
+wire Request;
+reg Inicio;
+reg [9:0] Counter_data;
+reg Reset;
+
+
+//Inicializacion Display
+reg [15:0] IData1=16'b0011110000111100;
+reg [15:0] IData2=16'b0011110000101100;
+reg [15:0] IData3=16'b0010110010001100;
+reg [15:0] IData4=16'b0000110010001100;
+reg [15:0] IData5=16'b0000110000011100;
+reg [15:0] IData6=16'b0000110001111100;
+reg [15:0] IData7=16'b0000110011001100;
+
+
+initial begin
+Counter_data=1'b0;
+Delay=1'b0;
+end
+
+DivFKHz Clock25KHz (Clock, S);
+I2CLCDRW I2C (Reset, Inicio, S, Address, DataI, DataO, 1'b0, SDA, SDAI, SCL, 9'd251, End, Request);
+
+
+always @(posedge S)begin
+
+
+
+if(Start==1'b1)begin
+
+	if(End)begin
+		Counter_data=1'b0;
+		Delay<=15'd4;
+	end
+
+	if(Delay!=0)begin
+		Delay<= Delay-1'b1;
+		Reset<=1;
+		Inicio<=0;
+	end
+	else begin
+		Reset<=0;
+		Inicio<=1;
+	end
+
+
+	if(Request)Counter_data=Counter_data+1'b1;
+
+		if(Counter_data==0)DataI=IData1[15:8];
+		else if(Counter_data==1)DataI={IData1[15:11],1'b0, IData1[9:8]};
+		else if(Counter_data==2)DataI=IData1[7:0];
+		else if(Counter_data==3)DataI={IData1[7:3],1'b0, IData1[1:0]};
+		else if(Counter_data==4)DataI=IData2[15:8];
+		else if(Counter_data==5)DataI={IData2[15:11],1'b0, IData2[9:8]};
+		else if(Counter_data==6)DataI=IData2[7:0];
+		else if(Counter_data==7)DataI={IData2[7:3],1'b0, IData2[1:0]};
+		else if(Counter_data==8)DataI=IData3[15:8];
+		else if(Counter_data==9)DataI={IData3[15:11],1'b0, IData3[9:8]};
+		else if(Counter_data==10)DataI=IData3[7:0];
+		else if(Counter_data==11)DataI={IData3[7:3],1'b0, IData3[1:0]};
+		else if(Counter_data==12)DataI=IData4[15:8];
+		else if(Counter_data==13)DataI={IData4[15:11],1'b0, IData4[9:8]};
+		else if(Counter_data==14)DataI=IData4[7:0];
+		else if(Counter_data==15)DataI={IData4[7:3],1'b0, IData4[1:0]};
+		else if(Counter_data==16)DataI=IData5[15:8];
+		else if(Counter_data==17)DataI={IData5[15:11],1'b0, IData5[9:8]};
+		else if(Counter_data==18)DataI=IData5[7:0];
+		else if(Counter_data==19)DataI={IData5[7:3],1'b0, IData5[1:0]};
+		else if(Counter_data==20)DataI=IData6[15:8];
+		else if(Counter_data==21)DataI={IData6[15:11],1'b0, IData6[9:8]};
+		else if(Counter_data==22)DataI=IData6[7:0];
+		else if(Counter_data==23)DataI={IData6[7:3],1'b0, IData6[1:0]};
+		else if(Counter_data==24)DataI=IData7[15:8];
+		else if(Counter_data==25)DataI={IData7[15:11],1'b0, IData7[9:8]};
+		else if(Counter_data==26)DataI=IData7[7:0];
+		else if(Counter_data==27)DataI={IData7[7:3],1'b0, IData7[1:0]};
+		//Caracter #1
+		else if(Counter_data==28)DataI={CHAR1[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==29)DataI={CHAR1[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==30)DataI={CHAR1[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==31)DataI={CHAR1[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #2
+		else if(Counter_data==32)DataI={CHAR2[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==33)DataI={CHAR2[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==34)DataI={CHAR2[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==35)DataI={CHAR2[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #3
+		else if(Counter_data==36)DataI={CHAR3[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==37)DataI={CHAR3[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==38)DataI={CHAR3[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==39)DataI={CHAR3[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #4
+		else if(Counter_data==40)DataI={CHAR4[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==41)DataI={CHAR4[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==42)DataI={CHAR4[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==43)DataI={CHAR4[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #5
+		else if(Counter_data==44)DataI={CHAR5[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==45)DataI={CHAR5[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==46)DataI={CHAR5[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==47)DataI={CHAR5[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #6
+		else if(Counter_data==48)DataI={CHAR6[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==49)DataI={CHAR6[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==50)DataI={CHAR6[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==51)DataI={CHAR6[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #7
+		else if(Counter_data==52)DataI={CHAR7[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==53)DataI={CHAR7[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==54)DataI={CHAR7[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==55)DataI={CHAR7[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #8
+		else if(Counter_data==56)DataI={CHAR8[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==57)DataI={CHAR8[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==58)DataI={CHAR8[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==59)DataI={CHAR8[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #9
+		else if(Counter_data==60)DataI={CHAR9[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==61)DataI={CHAR9[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==62)DataI={CHAR9[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==63)DataI={CHAR9[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #10
+		else if(Counter_data==64)DataI={CHAR10[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==65)DataI={CHAR10[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==66)DataI={CHAR10[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==67)DataI={CHAR10[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #11
+		else if(Counter_data==68)DataI={CHAR11[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==69)DataI={CHAR11[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==70)DataI={CHAR11[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==71)DataI={CHAR11[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #12
+		else if(Counter_data==72)DataI={CHAR12[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==73)DataI={CHAR12[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==74)DataI={CHAR12[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==75)DataI={CHAR12[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #13
+		else if(Counter_data==76)DataI={CHAR13[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==77)DataI={CHAR13[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==78)DataI={CHAR13[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==79)DataI={CHAR13[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #14
+		else if(Counter_data==80)DataI={CHAR14[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==81)DataI={CHAR14[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==82)DataI={CHAR14[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==83)DataI={CHAR14[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #15
+		else if(Counter_data==84)DataI={CHAR15[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==85)DataI={CHAR15[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==86)DataI={CHAR15[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==87)DataI={CHAR15[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #16
+		else if(Counter_data==88)DataI={CHAR16[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==89)DataI={CHAR16[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==90)DataI={CHAR16[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==91)DataI={CHAR16[3:0],1'b1,1'b0,1'b0,1'b1};
+		
+		
+		//Corrimiento (40 Caracteres primera linea)
+		
+		else if(Counter_data==92)DataI=8'b00011100;
+		else if(Counter_data==93)DataI=8'b00011000;
+		else if(Counter_data==94)DataI=8'b01001100;
+		else if(Counter_data==95)DataI=8'b01001000;
+		
+		else if(Counter_data==96)DataI=8'b00011100;
+		else if(Counter_data==97)DataI=8'b00011000;
+		else if(Counter_data==98)DataI=8'b01001100;
+		else if(Counter_data==99)DataI=8'b01001000;
+		
+		else if(Counter_data==100)DataI=8'b00011100;
+		else if(Counter_data==101)DataI=8'b00011000;
+		else if(Counter_data==102)DataI=8'b01001100;
+		else if(Counter_data==103)DataI=8'b01001000;
+		
+		else if(Counter_data==104)DataI=8'b00011100;
+		else if(Counter_data==105)DataI=8'b00011000;
+		else if(Counter_data==106)DataI=8'b01001100;
+		else if(Counter_data==107)DataI=8'b01001000;
+		
+		else if(Counter_data==108)DataI=8'b00011100;
+		else if(Counter_data==109)DataI=8'b00011000;
+		else if(Counter_data==110)DataI=8'b01001100;
+		else if(Counter_data==111)DataI=8'b01001000;
+		
+		else if(Counter_data==112)DataI=8'b00011100;
+		else if(Counter_data==113)DataI=8'b00011000;
+		else if(Counter_data==114)DataI=8'b01001100;
+		else if(Counter_data==115)DataI=8'b01001000;
+		
+		else if(Counter_data==116)DataI=8'b00011100;
+		else if(Counter_data==117)DataI=8'b00011000;
+		else if(Counter_data==118)DataI=8'b01001100;
+		else if(Counter_data==119)DataI=8'b01001000;
+		
+		else if(Counter_data==120)DataI=8'b00011100;
+		else if(Counter_data==121)DataI=8'b00011000;
+		else if(Counter_data==122)DataI=8'b01001100;
+		else if(Counter_data==123)DataI=8'b01001000;
+		
+		else if(Counter_data==124)DataI=8'b00011100;
+		else if(Counter_data==125)DataI=8'b00011000;
+		else if(Counter_data==126)DataI=8'b01001100;
+		else if(Counter_data==127)DataI=8'b01001000;
+		
+		else if(Counter_data==128)DataI=8'b00011100;
+		else if(Counter_data==129)DataI=8'b00011000;
+		else if(Counter_data==130)DataI=8'b01001100;
+		else if(Counter_data==131)DataI=8'b01001000;
+		
+		else if(Counter_data==132)DataI=8'b00011100;
+		else if(Counter_data==133)DataI=8'b00011000;
+		else if(Counter_data==134)DataI=8'b01001100;
+		else if(Counter_data==135)DataI=8'b01001000;
+		
+		else if(Counter_data==136)DataI=8'b00011100;
+		else if(Counter_data==137)DataI=8'b00011000;
+		else if(Counter_data==138)DataI=8'b01001100;
+		else if(Counter_data==139)DataI=8'b01001000;
+		
+		else if(Counter_data==140)DataI=8'b00011100;
+		else if(Counter_data==141)DataI=8'b00011000;
+		else if(Counter_data==142)DataI=8'b01001100;
+		else if(Counter_data==143)DataI=8'b01001000;
+		
+		else if(Counter_data==144)DataI=8'b00011100;
+		else if(Counter_data==145)DataI=8'b00011000;
+		else if(Counter_data==146)DataI=8'b01001100;
+		else if(Counter_data==147)DataI=8'b01001000;
+		
+		else if(Counter_data==148)DataI=8'b00011100;
+		else if(Counter_data==149)DataI=8'b00011000;
+		else if(Counter_data==150)DataI=8'b01001100;
+		else if(Counter_data==151)DataI=8'b01001000;
+		
+		else if(Counter_data==152)DataI=8'b00011100;
+		else if(Counter_data==153)DataI=8'b00011000;
+		else if(Counter_data==154)DataI=8'b01001100;
+		else if(Counter_data==155)DataI=8'b01001000;
+		
+		else if(Counter_data==156)DataI=8'b00011100;
+		else if(Counter_data==157)DataI=8'b00011000;
+		else if(Counter_data==158)DataI=8'b01001100;
+		else if(Counter_data==159)DataI=8'b01001000;
+		
+		else if(Counter_data==160)DataI=8'b00011100;
+		else if(Counter_data==161)DataI=8'b00011000;
+		else if(Counter_data==162)DataI=8'b01001100;
+		else if(Counter_data==163)DataI=8'b01001000;
+		
+		else if(Counter_data==164)DataI=8'b00011100;
+		else if(Counter_data==165)DataI=8'b00011000;
+		else if(Counter_data==166)DataI=8'b01001100;
+		else if(Counter_data==167)DataI=8'b01001000;
+		
+		else if(Counter_data==168)DataI=8'b00011100;
+		else if(Counter_data==169)DataI=8'b00011000;
+		else if(Counter_data==170)DataI=8'b01001100;
+		else if(Counter_data==171)DataI=8'b01001000;
+		
+		else if(Counter_data==172)DataI=8'b00011100;
+		else if(Counter_data==173)DataI=8'b00011000;
+		else if(Counter_data==174)DataI=8'b01001100;
+		else if(Counter_data==175)DataI=8'b01001000;
+		
+		else if(Counter_data==176)DataI=8'b00011100;
+		else if(Counter_data==177)DataI=8'b00011000;
+		else if(Counter_data==178)DataI=8'b01001100;
+		else if(Counter_data==179)DataI=8'b01001000;
+		
+		else if(Counter_data==180)DataI=8'b00011100;
+		else if(Counter_data==181)DataI=8'b00011000;
+		else if(Counter_data==182)DataI=8'b01001100;
+		else if(Counter_data==183)DataI=8'b01001000;
+		
+		else if(Counter_data==184)DataI=8'b00011100;
+		else if(Counter_data==185)DataI=8'b00011000;
+		else if(Counter_data==186)DataI=8'b01001100;
+		else if(Counter_data==187)DataI=8'b01001000;
+
+		//#2 Fila
+		
+		//Caracter #17
+		else if(Counter_data==188)DataI={CHAR17[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==189)DataI={CHAR17[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==190)DataI={CHAR17[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==191)DataI={CHAR17[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #18
+		else if(Counter_data==192)DataI={CHAR18[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==193)DataI={CHAR18[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==194)DataI={CHAR18[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==195)DataI={CHAR18[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #19
+		else if(Counter_data==196)DataI={CHAR19[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==197)DataI={CHAR19[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==198)DataI={CHAR19[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==199)DataI={CHAR19[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #20
+		else if(Counter_data==200)DataI={CHAR20[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==201)DataI={CHAR20[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==202)DataI={CHAR20[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==203)DataI={CHAR20[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #21
+		else if(Counter_data==204)DataI={CHAR21[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==205)DataI={CHAR21[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==206)DataI={CHAR21[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==207)DataI={CHAR21[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #22
+		else if(Counter_data==208)DataI={CHAR22[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==209)DataI={CHAR22[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==210)DataI={CHAR22[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==211)DataI={CHAR22[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #23
+		else if(Counter_data==212)DataI={CHAR23[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==213)DataI={CHAR23[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==214)DataI={CHAR23[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==215)DataI={CHAR23[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #24
+		else if(Counter_data==216)DataI={CHAR24[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==217)DataI={CHAR24[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==218)DataI={CHAR24[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==219)DataI={CHAR24[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #25
+		else if(Counter_data==220)DataI={CHAR25[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==221)DataI={CHAR25[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==222)DataI={CHAR25[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==223)DataI={CHAR25[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #26
+		else if(Counter_data==224)DataI={CHAR26[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==225)DataI={CHAR26[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==226)DataI={CHAR26[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==227)DataI={CHAR26[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #27
+		else if(Counter_data==228)DataI={CHAR27[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==229)DataI={CHAR27[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==230)DataI={CHAR27[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==231)DataI={CHAR27[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #28
+		else if(Counter_data==232)DataI={CHAR28[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==233)DataI={CHAR28[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==234)DataI={CHAR28[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==235)DataI={CHAR28[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #29
+		else if(Counter_data==236)DataI={CHAR29[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==237)DataI={CHAR29[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==238)DataI={CHAR29[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==239)DataI={CHAR29[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #30
+		else if(Counter_data==240)DataI={CHAR30[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==241)DataI={CHAR30[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==242)DataI={CHAR30[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==243)DataI={CHAR30[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #31
+		else if(Counter_data==244)DataI={CHAR31[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==245)DataI={CHAR31[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==246)DataI={CHAR31[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==247)DataI={CHAR31[3:0],1'b1,1'b0,1'b0,1'b1};
+		//Caracter #32
+		else if(Counter_data==248)DataI={CHAR32[7:4],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==249)DataI={CHAR32[7:4],1'b1,1'b0,1'b0,1'b1};
+		else if(Counter_data==250)DataI={CHAR32[3:0],1'b1,1'b1,1'b0,1'b1};
+		else if(Counter_data==251)DataI={CHAR32[3:0],1'b1,1'b0,1'b0,1'b1};
+		
+end
+else Reset<=1'b1; 		
+
+
+
+end
+
+
+endmodule
+

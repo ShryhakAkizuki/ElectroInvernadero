@@ -1,0 +1,96 @@
+module Uart(Clock, Start, Rx, Tx, TXData1, TXData2, TXData3, RxData1, RxData2, Finalizado); 
+
+
+input wire Clock;
+input wire Rx;
+output wire Tx;
+
+input wire Start;
+output reg Finalizado;
+
+output reg [7:0] RxData1;
+output reg [7:0] RxData2;
+input wire [7:0] TXData1;
+input wire [7:0] TXData2;
+input wire [7:0] TXData3;
+
+wire [7:0] RxData;
+reg [7:0] TxData;
+wire RxDone;
+wire TxDone;
+reg TxEn=1'b1;
+reg RxEn=1'b1;
+reg Reset=1'b1;
+reg [2:0] DelayTX;
+reg [2:0] DelayRX;
+
+reg[1:0] CounterTX=1'b0;
+reg[1:0] CounterRX=1'b0;
+
+
+TOP Uart(Clock, Reset, Rx, Tx, RxData, TxData, RxDone, TxDone,TxEn, RxEn);
+always @(posedge Clock)begin
+
+
+if(Start==1'b1)begin
+
+
+	//Read
+	if(CounterRX==1'b0)RxData1=RxData;
+	if(CounterRX==1'b1)RxData2=RxData;
+	
+	
+	if(RxDone)begin
+		DelayRX=3'd2;
+	end
+	
+	if(DelayRX==1'b1)CounterRX=CounterRX+1'b1;
+	
+	if(DelayRX!=0)begin
+		DelayRX=DelayRX-1'b1;
+	end
+		
+		
+		
+	//Write
+	if(CounterTX!=2'd3)begin
+		
+		if(CounterTX==1'b0)TxData=TXData1;
+		if(CounterTX==1'b1)TxData=TXData2;
+		if(CounterTX==2'd2)TxData=TXData3;
+		
+		Finalizado=1'b0;
+		
+		if(TxDone) begin
+			TxEn=1'b0;
+			DelayTX=3'd2;
+		end 
+
+		if(DelayTX==1'b1)CounterTX=CounterTX+1'b1;
+
+
+		if(DelayTX!=0)begin
+			TxEn=1'b0;
+			DelayTX=DelayTX-1'b1;
+		end else TxEn=1'b1;
+		
+		
+	end else begin
+		TxEn=1'b0;
+		Finalizado=1'b1;
+	end
+	
+	
+	
+	
+	
+end else begin
+TxEn=1'b0;
+CounterTX=1'b0;
+CounterRX=1'b0;
+end
+
+end
+
+
+endmodule

@@ -1,0 +1,145 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "SCL",
+					"strict" : false
+				},
+				{
+					"name" : "SDA",
+					"strict" : false
+				},
+				{
+					"name" : "Tx",
+					"strict" : false
+				},
+				{
+					"name" : "Temperatura",
+					"strict" : false
+				},
+				{
+					"name" : "Riego",
+					"strict" : false
+				},
+				{
+					"name" : "Pesticida",
+					"strict" : false
+				},
+				{
+					"name" : "Iluminacion",
+					"strict" : false
+				},
+				{
+					"name" : "SalidaServo",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Sseg[6]",
+					"strict" : false
+				},
+				{
+					"name" : "an[0]",
+					"strict" : false
+				},
+				{
+					"name" : "an[1]",
+					"strict" : false
+				},
+				{
+					"name" : "an[2]",
+					"strict" : false
+				},
+				{
+					"name" : "an[3]",
+					"strict" : false
+				},
+				{
+					"name" : "an[4]",
+					"strict" : false
+				},
+				{
+					"name" : "an[5]",
+					"strict" : false
+				},
+				{
+					"name" : "an[6]",
+					"strict" : false
+				},
+				{
+					"name" : "an[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Clock",
+					"strict" : false
+				},
+				{
+					"name" : "ArduinoTemp",
+					"strict" : false
+				},
+				{
+					"name" : "ArduinoIlum",
+					"strict" : false
+				},
+				{
+					"name" : "KeyEnter",
+					"strict" : false
+				},
+				{
+					"name" : "KeyLeft",
+					"strict" : false
+				},
+				{
+					"name" : "KeyEscape",
+					"strict" : false
+				},
+				{
+					"name" : "KeyRight",
+					"strict" : false
+				},
+				{
+					"name" : "ArduinoRiego",
+					"strict" : false
+				},
+				{
+					"name" : "ArduinoPesticida",
+					"strict" : false
+				},
+				{
+					"name" : "KeyDown",
+					"strict" : false
+				},
+				{
+					"name" : "KeyUp",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

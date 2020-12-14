@@ -1,0 +1,65 @@
+
+State Machine - |Main|Status
+Name Status.ControlPesticida Status.ControlRiego Status.ControlServo Status.ControlCalefaccion Status.ControlIluminacion Status.ControlManual Status.AINTENSIDADUV Status.AJUSTESINTENSIDADUV Status.ATEMPERATURA Status.AJUSTESTEMPERATURA Status.AHUMEDADA Status.AJUSTESHUMEDADA Status.ACANTIDADA Status.AHUMEDADS Status.AJUSTEHUMEDADCANTIDAD Status.AJUSTES Status.IINTENSIDADUV Status.ICALIDADA Status.ITEMPERATURA Status.IHUMEDADA Status.IHUMEDADS Status.00000000000 
+Status.00000000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Status.IHUMEDADS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+Status.IHUMEDADA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+Status.ITEMPERATURA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+Status.ICALIDADA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+Status.IINTENSIDADUV 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+Status.AJUSTES 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+Status.AJUSTEHUMEDADCANTIDAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+Status.AHUMEDADS 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+Status.ACANTIDADA 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+Status.AJUSTESHUMEDADA 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+Status.AHUMEDADA 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+Status.AJUSTESTEMPERATURA 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ATEMPERATURA 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.AJUSTESINTENSIDADUV 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.AINTENSIDADUV 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ControlManual 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ControlIluminacion 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ControlCalefaccion 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ControlServo 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ControlRiego 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Status.ControlPesticida 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Main|Control:Salidas|CronoRiego:RiegoPrincipal|Riego:R|Multiplicador:Multiplicar|Status
+Name Status.SHIFT Status.ADD Status.CHECK Status.START Status.END 
+Status.START 0 0 0 0 0 
+Status.CHECK 0 0 1 1 0 
+Status.ADD 0 1 0 1 0 
+Status.SHIFT 1 0 0 1 0 
+Status.END 0 0 0 1 1 
+
+State Machine - |Main|Control:Salidas|Riego:RiegoPesticida|Multiplicador:Multiplicar|Status
+Name Status.SHIFT Status.ADD Status.CHECK Status.START Status.END 
+Status.START 0 0 0 0 0 
+Status.CHECK 0 0 1 1 0 
+Status.ADD 0 1 0 1 0 
+Status.SHIFT 1 0 0 1 0 
+Status.END 0 0 0 1 1 
+
+State Machine - |Main|TwoRegToChar:I2C|RegistroEntero1
+Name RegistroEntero1.00001001 RegistroEntero1.00001000 RegistroEntero1.00000111 RegistroEntero1.00000110 RegistroEntero1.00000101 RegistroEntero1.00000100 RegistroEntero1.00000011 RegistroEntero1.00000010 RegistroEntero1.00000001 RegistroEntero1.00000000 
+RegistroEntero1.00000000 0 0 0 0 0 0 0 0 0 0 
+RegistroEntero1.00000001 0 0 0 0 0 0 0 0 1 1 
+RegistroEntero1.00000010 0 0 0 0 0 0 0 1 0 1 
+RegistroEntero1.00000011 0 0 0 0 0 0 1 0 0 1 
+RegistroEntero1.00000100 0 0 0 0 0 1 0 0 0 1 
+RegistroEntero1.00000101 0 0 0 0 1 0 0 0 0 1 
+RegistroEntero1.00000110 0 0 0 1 0 0 0 0 0 1 
+RegistroEntero1.00000111 0 0 1 0 0 0 0 0 0 1 
+RegistroEntero1.00001000 0 1 0 0 0 0 0 0 0 1 
+RegistroEntero1.00001001 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Main|LCD16X2:Displa|I2CLCDRW:I2C|State
+Name State.STATE_STOP State.STATE_WACK2 State.STATE_DATA State.STATE_WACK State.STATE_RW State.STATE_ADDR State.STATE_START State.000 
+State.000 0 0 0 0 0 0 0 0 
+State.STATE_START 0 0 0 0 0 0 1 1 
+State.STATE_ADDR 0 0 0 0 0 1 0 1 
+State.STATE_RW 0 0 0 0 1 0 0 1 
+State.STATE_WACK 0 0 0 1 0 0 0 1 
+State.STATE_DATA 0 0 1 0 0 0 0 1 
+State.STATE_WACK2 0 1 0 0 0 0 0 1 
+State.STATE_STOP 1 0 0 0 0 0 0 1 

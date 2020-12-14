@@ -1,0 +1,257 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'DivFKHz:Reloj|S'
+Slack : -14.720
+TNS   : -3122.235
+
+Type  : Slow 1200mV 85C Model Setup 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : -6.995
+TNS   : -229.382
+
+Type  : Slow 1200mV 85C Model Setup 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : -4.931
+TNS   : -89.806
+
+Type  : Slow 1200mV 85C Model Setup 'Clock'
+Slack : -4.551
+TNS   : -439.766
+
+Type  : Slow 1200mV 85C Model Setup 'Control:Salidas|DivF:Segundos|S'
+Slack : -4.106
+TNS   : -26.465
+
+Type  : Slow 1200mV 85C Model Setup 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -2.859
+TNS   : -45.802
+
+Type  : Slow 1200mV 85C Model Setup 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : -2.502
+TNS   : -19.935
+
+Type  : Slow 1200mV 85C Model Hold 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -0.230
+TNS   : -2.483
+
+Type  : Slow 1200mV 85C Model Hold 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : 0.433
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : 0.433
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Clock'
+Slack : 0.452
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'DivFKHz:Reloj|S'
+Slack : 0.452
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : 0.465
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Control:Salidas|DivF:Segundos|S'
+Slack : 0.679
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Clock'
+Slack : -3.000
+TNS   : -260.251
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'DivFKHz:Reloj|S'
+Slack : -1.487
+TNS   : -637.923
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : -1.487
+TNS   : -96.655
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : -1.487
+TNS   : -53.532
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Control:Salidas|DivF:Segundos|S'
+Slack : -1.487
+TNS   : -31.227
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -1.487
+TNS   : -29.740
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : -1.487
+TNS   : -22.305
+
+Type  : Slow 1200mV 0C Model Setup 'DivFKHz:Reloj|S'
+Slack : -13.695
+TNS   : -2878.541
+
+Type  : Slow 1200mV 0C Model Setup 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : -6.525
+TNS   : -210.643
+
+Type  : Slow 1200mV 0C Model Setup 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : -4.585
+TNS   : -80.573
+
+Type  : Slow 1200mV 0C Model Setup 'Clock'
+Slack : -4.150
+TNS   : -396.696
+
+Type  : Slow 1200mV 0C Model Setup 'Control:Salidas|DivF:Segundos|S'
+Slack : -3.708
+TNS   : -22.268
+
+Type  : Slow 1200mV 0C Model Setup 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -2.524
+TNS   : -40.780
+
+Type  : Slow 1200mV 0C Model Setup 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : -2.323
+TNS   : -18.015
+
+Type  : Slow 1200mV 0C Model Hold 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -0.263
+TNS   : -3.298
+
+Type  : Slow 1200mV 0C Model Hold 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : 0.383
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : 0.383
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Clock'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'DivFKHz:Reloj|S'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : 0.417
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Control:Salidas|DivF:Segundos|S'
+Slack : 0.602
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Clock'
+Slack : -3.000
+TNS   : -260.251
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'DivFKHz:Reloj|S'
+Slack : -1.487
+TNS   : -637.923
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : -1.487
+TNS   : -96.655
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : -1.487
+TNS   : -53.544
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Control:Salidas|DivF:Segundos|S'
+Slack : -1.487
+TNS   : -31.227
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -1.487
+TNS   : -29.740
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : -1.487
+TNS   : -22.305
+
+Type  : Fast 1200mV 0C Model Setup 'DivFKHz:Reloj|S'
+Slack : -5.785
+TNS   : -1112.515
+
+Type  : Fast 1200mV 0C Model Setup 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : -2.430
+TNS   : -64.396
+
+Type  : Fast 1200mV 0C Model Setup 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : -1.516
+TNS   : -20.221
+
+Type  : Fast 1200mV 0C Model Setup 'Clock'
+Slack : -1.313
+TNS   : -97.092
+
+Type  : Fast 1200mV 0C Model Setup 'Control:Salidas|DivF:Segundos|S'
+Slack : -1.186
+TNS   : -2.098
+
+Type  : Fast 1200mV 0C Model Setup 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -0.689
+TNS   : -9.500
+
+Type  : Fast 1200mV 0C Model Setup 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : -0.536
+TNS   : -1.703
+
+Type  : Fast 1200mV 0C Model Hold 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -0.079
+TNS   : -0.612
+
+Type  : Fast 1200mV 0C Model Hold 'Clock'
+Slack : 0.169
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : 0.179
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'DivFKHz:Reloj|S'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : 0.193
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Control:Salidas|DivF:Segundos|S'
+Slack : 0.257
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Clock'
+Slack : -3.000
+TNS   : -187.302
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'DivFKHz:Reloj|S'
+Slack : -1.000
+TNS   : -429.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'LCD16X2:Displa|DivFKHz:Clock25KHz|S'
+Slack : -1.000
+TNS   : -65.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Control:Salidas|CronoRiego:RiegoPrincipal|DivF:Seconds|S'
+Slack : -1.000
+TNS   : -36.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Control:Salidas|DivF:Segundos|S'
+Slack : -1.000
+TNS   : -21.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Usend:comb_3|TOPSendder:UartTX|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0]'
+Slack : -1.000
+TNS   : -20.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Control:Salidas|CronoRiego:RiegoPrincipal|Cronometro:Crono|SSeg:Display|DivFKHzK:DivFKHz|S'
+Slack : -1.000
+TNS   : -15.000
+
+------------------------------------------------------------
