@@ -24,4 +24,7 @@ Para la implementacion de los elementos se utilizaron los siguientes materiales:
 * Modulo I2C - LCD16x02
 
 ## Video Demostrativo
-El link del video en donde se muestra el proyecto en funcionamiento es el [Siguiente](https://Google.com).
+El link del video en donde se muestra el proyecto en funcionamiento es el [Siguiente](https://youtu.be/kHIONFhJzH8).
+
+### Informe - Documentacion
+La documentacion respectiva del proyecto se encuentra en el siguiente [Enlace](https://drive.google.com/file/d/1aZNF6wVFx2tioZzv7LUXKEGnc0RWbv50/view?usp=sharing).
